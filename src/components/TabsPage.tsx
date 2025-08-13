@@ -13,6 +13,7 @@ export const TabsPage: React.FC<TabsPageProps> = ({ tabs }) => {
   return (
     <div data-cy="TabsComponent">
       <h1 className="title">Tabs page</h1>
+
       <div className="tabs is-boxed">
         <ul>
           {tabs.map(tab => (
@@ -30,7 +31,7 @@ export const TabsPage: React.FC<TabsPageProps> = ({ tabs }) => {
       </div>
 
       <div className="block" data-cy="TabContent">
-        {activeTab ? activeTab.content : <h1>Please select a tab</h1>}
+        {activeTab ? activeTab.content : 'Please select a tab'}
       </div>
     </div>
   );

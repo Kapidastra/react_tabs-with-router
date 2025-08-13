@@ -6,7 +6,6 @@ import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { TabsPage } from './components/TabsPage';
 import { useLocation } from 'react-router-dom';
 
-// Дані для вкладок
 const tabs = [
   { id: 'tab-1', title: 'Tab 1', content: 'Some text 1' },
   { id: 'tab-2', title: 'Tab 2', content: 'Some text 2' },
