@@ -2,9 +2,8 @@ import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
 import React from 'react';
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import { TabsPage } from './components/TabsPage';
-import { useLocation } from 'react-router-dom';
 
 const tabs = [
   { id: 'tab-1', title: 'Tab 1', content: 'Some text 1' },
@@ -15,6 +14,9 @@ const tabs = [
 export const App: React.FC = () => {
   const location = useLocation();
 
+  const homeActive = location.pathname === '/';
+  const tabsActive = location.pathname.startsWith('/tabs');
+
   return (
     <>
       <nav
@@ -23,20 +25,23 @@ export const App: React.FC = () => {
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link
-              to="/"
-              className={`navbar-item ${location.pathname === '/' ? 'is-active' : ''}`}
-            >
-              {' '}
-              Home{' '}
-            </Link>
-            <Link
-              to="/tabs"
-              className={`navbar-item ${location.pathname.startsWith('/tabs') ? 'is-active' : ''}`}
-            >
-              {' '}
-              Tabs{' '}
-            </Link>
+            <div className={homeActive ? 'is-active' : ''}>
+              <Link
+                to="/"
+                className={`navbar-item ${homeActive ? 'is-active' : ''}`}
+              >
+                Home
+              </Link>
+            </div>
+
+            <div className={tabsActive ? 'is-active' : ''}>
+              <Link
+                to="/tabs"
+                className={`navbar-item ${tabsActive ? 'is-active' : ''}`}
+              >
+                Tabs
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
