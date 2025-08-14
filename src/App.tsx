@@ -22,22 +22,18 @@ export const App: React.FC = () => {
       >
         <div className="container">
           <div className="navbar-brand">
-            <div className={location.pathname === '/' ? 'nav-item-wrapper active-parent' : 'nav-item-wrapper'}>
-              <Link
-                to="/"
-                className={`navbar-item ${location.pathname === '/' ? 'is-active' : ''}`}
-              >
-                Home
-              </Link>
-            </div>
-            <div className={location.pathname.startsWith('/tabs') ? 'nav-item-wrapper active-parent' : 'nav-item-wrapper'}>
-              <Link
-                to="/tabs"
-                className={`navbar-item ${location.pathname.startsWith('/tabs') ? 'is-active' : ''}`}
-              >
-                Tabs
-              </Link>
-            </div>
+            <Link
+              to="/"
+              className={`navbar-item ${location.pathname === '/' ? 'is-active' : ''}`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/tabs"
+              className={`navbar-item ${location.pathname.startsWith('/tabs') ? 'is-active' : ''}`}
+            >
+              Tabs
+            </Link>
           </div>
         </div>
       </nav>
@@ -50,7 +46,6 @@ export const App: React.FC = () => {
             <Route index element={<TabsPage tabs={tabs} />} />
             <Route path=":tabId" element={<TabsPage tabs={tabs} />} />
           </Route>
-
           <Route path="*" element={<h1 className="title">Page not found</h1>} />
         </Routes>
       </div>
