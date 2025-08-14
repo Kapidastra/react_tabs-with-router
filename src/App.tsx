@@ -14,9 +14,6 @@ const tabs = [
 export const App: React.FC = () => {
   const location = useLocation();
 
-  const homeActive = location.pathname === '/';
-  const tabsActive = location.pathname.startsWith('/tabs');
-
   return (
     <>
       <nav
@@ -25,19 +22,18 @@ export const App: React.FC = () => {
       >
         <div className="container">
           <div className="navbar-brand">
-            <div className={homeActive ? 'is-active' : ''}>
+            <div className={location.pathname === '/' ? 'nav-item-wrapper active-parent' : 'nav-item-wrapper'}>
               <Link
                 to="/"
-                className={`navbar-item ${homeActive ? 'is-active' : ''}`}
+                className={`navbar-item ${location.pathname === '/' ? 'is-active' : ''}`}
               >
                 Home
               </Link>
             </div>
-
-            <div className={tabsActive ? 'is-active' : ''}>
+            <div className={location.pathname.startsWith('/tabs') ? 'nav-item-wrapper active-parent' : 'nav-item-wrapper'}>
               <Link
                 to="/tabs"
-                className={`navbar-item ${tabsActive ? 'is-active' : ''}`}
+                className={`navbar-item ${location.pathname.startsWith('/tabs') ? 'is-active' : ''}`}
               >
                 Tabs
               </Link>
